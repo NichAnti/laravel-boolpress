@@ -1,0 +1,33 @@
+@extends('layouts.mainLayout')
+
+@section('content')
+
+  <div class="post">
+
+    <h2>{{ $post->title }}</h2>
+    <p>{{ $post->content }} </p>
+    <h4>{{ $post->author }} </h4>
+
+    <ul>
+      @foreach($post->categories as $category)
+
+        <li>{{ $category->name }}</li>
+
+      @endforeach
+    </ul>
+
+    <small>{{ $post->created_at }} </small><br>
+    
+    <a href="{{ route('posts.edit', $post->id) }}">edit</a><br>
+
+    <form action="{{ route('posts.destroy', $post->id) }}" method="post">
+      @csrf
+      @method('DELETE')
+      <input type="submit" value="delete"></input>
+    </form>
+
+  </div><br>
+
+
+
+@stop

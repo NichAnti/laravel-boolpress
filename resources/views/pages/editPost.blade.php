@@ -8,28 +8,37 @@
     @method('PATCH')
 
     <label for="title">title</label>
-    <input type="text" name="title" value="{{ $post->title }}"><br>
+    <input id="title" type="text" name="title" value="{{ $post->title }}"><br>
 
     <label for="content">content</label>
     <!-- <input type="text" name="content" value="{{ $post->content }}"> -->
-    <textarea name="content" rows="8" cols="80">{{ $post->content }}</textarea><br>
+    <textarea id="content" name="content" rows="8" cols="80">{{ $post->content }}</textarea><br>
 
     <label for="author">author</label>
-    <input type="text" name="author" value="{{ $post->author }}"><br>
+    <input id="author" type="text" name="author" value="{{ $post->author }}"><br>
+
+    <fieldset>
+
+      @foreach($categories as $category)
+        <div>
+
+          <input id="{{ $category->name }}" type="checkbox" name="category[]" value="{{ $category->id }}"
+          @foreach($post->categories as $postCategory)
+            @if ($category->id == $postCategory->id)
+              checked
+            @endif
+          @endforeach
+          >
+          <label for="{{ $category->name }}">{{ $category->name }}</label>
+
+
+        </div>
+      @endforeach
+
+    </fieldset>
+
 
     <input type="submit" value="save">
-
-    @foreach($categories as $category)
-
-      <input type="checkbox" name="category" value="{{ $category->id }}"
-
-      @if ($category->id == $post->categories)
-        checked
-      @endif
-
-      > {{ $category->name }}<br>
-
-    @endforeach
 
   </form>
 

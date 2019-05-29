@@ -43,16 +43,18 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-      $validateData = $request->validate([
-
-        'title' => 'required',
-        'content' => 'required',
-        'author' => 'required',
-      ]);
-
-      $post = Post::create($validateData);
-      return redirect('posts');
-
+      // $validateData = $request->validate([
+      //
+      //   'title' => 'required',
+      //   'content' => 'required',
+      //   'author' => 'required',
+      //   'category' => 'required'
+      // ]);
+      //
+      // $post = Post::create($validateData);
+      // $categories = Category::->get();
+      // $post->categories()->attach($categories);
+      // return redirect('posts');
     }
 
     /**
@@ -90,15 +92,18 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $validateData = $request->validate([
-
-        'title' => 'required',
-        'content' => 'required',
-        'author' => 'required',
-      ]);
-
-      $post = Post::whereId($id)->update($validateData);
-      return redirect('posts');
+      // $validateData = $request->validate([
+      //
+      //   'title' => 'required',
+      //   'content' => 'required',
+      //   'author' => 'required',
+      //   'category'=> 'required'
+      // ]);
+      //
+      // $post = Post::whereId($id)->update($validateData);
+      // $categories = Category::->get();
+      // $post->categories()->attach($categories);
+      // return redirect('posts');
     }
 
     /**

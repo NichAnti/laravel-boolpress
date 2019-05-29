@@ -7,20 +7,24 @@
     @csrf
 
     <label for="title">title</label>
-    <input type="text" name="title" placeholder="write title"><br>
+    <input id="title" type="text" name="title" placeholder="write title"><br>
 
     <label for="content">content</label>
-    <!-- <input type="text" name="content" placeholder="write content"> -->
-    <textarea name="content" rows="8" cols="80" placeholder="write content"></textarea><br>
+    <textarea id="content" name="content" rows="8" cols="80" placeholder="write content"></textarea><br>
 
     <label for="author">author</label>
-    <input type="text" name="author" placeholder="write author"><br>
+    <input id="author" type="text" name="author" placeholder="write author"><br>
 
-    @foreach($categories as $category)
+    <fieldset>
 
-      <input type="checkbox" name="category" value="{{ $category->id }}"> {{ $category->name }}<br>
+      @foreach($categories as $category)
+        <div>
+          <input id="{{ $category->name }}" type="checkbox" name="category[]" value="{{ $category->id }}">
+          <label for="{{ $category->name }}">{{ $category->name }}</label>
+        </div>
+      @endforeach
 
-    @endforeach
+    </fieldset>
 
     <input type="submit" value="save new post">
 

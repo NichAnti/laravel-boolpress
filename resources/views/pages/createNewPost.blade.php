@@ -6,27 +6,32 @@
 
     @csrf
 
-    <label for="title">title</label>
-    <input id="title" type="text" name="title" placeholder="write title"><br>
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input class="form-control" id="title" type="text" name="title" placeholder="write title"><br>
+    </div>
 
-    <label for="content">content</label>
-    <textarea id="content" name="content" rows="8" cols="80" placeholder="write content"></textarea><br>
+    <div class="form-group">
+      <label for="content">Content</label>
+      <textarea class="form-control" rows="10" id="content" name="content" placeholder="write content"></textarea><br>
+    </div>
 
-    <label for="author">author</label>
-    <input id="author" type="text" name="author" placeholder="write author"><br>
+    <div class="form-group">
+      <label for="author">Author</label>
+      <input class="form-control" id="author" type="text" name="author" placeholder="write author"><br>
+    </div>
 
-    <fieldset>
 
-      @foreach($categories as $category)
-        <div>
-          <input id="{{ $category->name }}" type="checkbox" name="category[]" value="{{ $category->id }}">
-          <label for="{{ $category->name }}">{{ $category->name }}</label>
-        </div>
-      @endforeach
+    <div class="form-group">
+        @foreach($categories as $category)
+          <div>
+            <input id="{{ $category->name }}" type="checkbox" name="category[]" value="{{ $category->id }}">
+            <label for="{{ $category->name }}">{{ $category->name }}</label>
+          </div>
+        @endforeach
+    </div>
 
-    </fieldset>
-
-    <input type="submit" value="save new post">
+    <input class="btn btn-primary btn-lg" type="submit" value="save new post">
 
   </form>
 

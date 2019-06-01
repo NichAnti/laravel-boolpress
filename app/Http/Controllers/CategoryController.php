@@ -18,7 +18,9 @@ class CategoryController extends Controller
     public function show($id)
     {
         $posts = Category::findOrFail($id)->posts;
-        return view('pages.showPostsCat', compact('posts'));
+        $categories = Category::all();
+
+        return view('pages.showPostsCat', compact('posts', 'categories'));
     }
 
 }

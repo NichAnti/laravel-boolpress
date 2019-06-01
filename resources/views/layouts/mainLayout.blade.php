@@ -14,9 +14,16 @@
     <body>
       <div class="container">
 
-        <a href="{{ route('posts.index') }}">
-          <h1>My Blog</h1>
-        </a>
+        <header class="py-3">
+          <div class="row justify-content-center align-items-center">
+            <div class="text-center">
+              <a class="text-dark" href="{{ route('posts.index') }}">
+                <h1>My Blog</h1>
+              </a>
+            </div>
+          </div>
+        </header>
+
 
         @if ($errors->any())
           <div class="alert alert-danger">
@@ -36,6 +43,8 @@
         @endif
 
         @yield('content')
+
+        <footer class="mt-5"></footer>
 
       </div>
     </body>

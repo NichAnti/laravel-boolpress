@@ -7,38 +7,40 @@
     @csrf
     @method('PATCH')
 
-    <label for="title">title</label>
-    <input id="title" type="text" name="title" value="{{ $post->title }}"><br>
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input id="title" class="form-control" type="text" name="title" value="{{ $post->title }}"><br>
+    </div>
 
-    <label for="content">content</label>
-    <!-- <input type="text" name="content" value="{{ $post->content }}"> -->
-    <textarea id="content" name="content" rows="8" cols="80">{{ $post->content }}</textarea><br>
+    <div class="form-group">
+      <label for="content">Content</label>
+      <textarea id="content" class="form-control" name="content" rows="10">{{ $post->content }}</textarea><br>
+    </div>
 
-    <label for="author">author</label>
-    <input id="author" type="text" name="author" value="{{ $post->author }}"><br>
+    <div class="form-group">
+      <label for="author">Author</label>
+      <input id="author" class="form-control" type="text" name="author" value="{{ $post->author }}"><br>
+    </div>
 
-    <fieldset>
+    <div class="form-group">
+        @foreach($categories as $category)
+          <div>
 
-      @foreach($categories as $category)
-        <div>
-
-          <input id="{{ $category->name }}" type="checkbox" name="category[]" value="{{ $category->id }}"
-          @foreach($post->categories as $postCategory)
-            @if ($category->id == $postCategory->id)
-              checked
-            @endif
-          @endforeach
-          >
-          <label for="{{ $category->name }}">{{ $category->name }}</label>
-
-
-        </div>
-      @endforeach
-
-    </fieldset>
+            <input id="{{ $category->name }}" type="checkbox" name="category[]" value="{{ $category->id }}"
+            @foreach($post->categories as $postCategory)
+              @if ($category->id == $postCategory->id)
+                checked
+              @endif
+            @endforeach
+            >
+            <label for="{{ $category->name }}">{{ $category->name }}</label>
 
 
-    <input type="submit" value="save">
+          </div>
+        @endforeach
+    </div>
+
+    <input class="btn btn-primary btn-lg" type="submit" value="save">
 
   </form>
 

@@ -43,18 +43,18 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-      // $validateData = $request->validate([
-      //
-      //   'title' => 'required',
-      //   'content' => 'required',
-      //   'author' => 'required',
-      //   'category' => 'required'
-      // ]);
-      //
-      // $post = Post::create($validateData);
-      // $categories = Category::->get();
-      // $post->categories()->attach($categories);
-      // return redirect('posts');
+      $validateData = $request->validate([
+
+        'title' => 'required',
+        'content' => 'required',
+        'author' => 'required',
+        'category' => 'required'
+      ]);
+
+      $post = Post::create($validateData);
+      $categories = Category::find($validateData['category']);
+      $post->categories()->attach($categories);
+      return redirect('posts');
     }
 
     /**
@@ -92,18 +92,19 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-      // $validateData = $request->validate([
-      //
-      //   'title' => 'required',
-      //   'content' => 'required',
-      //   'author' => 'required',
-      //   'category'=> 'required'
-      // ]);
-      //
-      // $post = Post::whereId($id)->update($validateData);
-      // $categories = Category::->get();
-      // $post->categories()->attach($categories);
-      // return redirect('posts');
+      $validateData = $request->validate([
+
+        'title' => 'required',
+        'content' => 'required',
+        'author' => 'required',
+        'category'=> 'required'
+      ]);
+
+      $post = Post::find(intval($id));
+      $post->update($validateData);
+      $categories = Category::find($validateData['category']);
+      $post->categories()->sync($categories);
+      return redirect('posts');
     }
 
     /**
@@ -115,6 +116,7 @@ class PostController extends Controller
     public function destroy($id)
     {
       $post = Post::findOrFail($id);
+      $post->categories()->detach();
       $post->delete();
       return redirect('posts');
     }

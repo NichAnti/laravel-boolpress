@@ -2,50 +2,55 @@
 
 @section('content')
 
-  @foreach($categories as $category)
+  <nav class="row justify-content-between bg-dark mb-4">
 
-    <a href="{{ route('categories.show', $category) }}">
-      <h2>{{ $category->name }}</h2>
-    </a>
+    @foreach($categories as $category)
 
-  @endforeach
+      <div class="p-2">
+        <a class=" text-white" href="{{ route('categories.show', $category) }}">{{ $category->name }}</a>
+      </div>
 
-  @foreach($posts as $post)
+    @endforeach
 
-    <a href="{{ route('posts.show', $post->id) }}">
+  </nav>
 
-      <div class="post">
+  <div class="row mb-4">
 
-        <h2>{{ $post->title }}</h2>
-        <p>{{ $post->content }} </p>
-        <h4>{{ $post->author }} </h4>
+    @foreach($posts as $post)
 
-        <ul>
-          @foreach($post->categories as $category)
+      <div class="col-md-6 mb-2">
+          <a href="{{ route('posts.show', $post->id) }}">
 
-            <li>{{ $category->name }}</li>
+            <div class="border rounded shadow-sm overflow-hidden p-5">
 
-          @endforeach
-        </ul>
+                @foreach($post->categories as $category)
 
-        <small>{{ $post->created_at }} </small><br>
+                  <span class="text-success">{{ $category->name }}</span>
 
-        <a href="{{ route('posts.edit', $post->id) }}">edit</a><br>
+                @endforeach
 
-        <form action="{{ route('posts.destroy', $post->id) }}" method="post">
-          @csrf
-          @method('DELETE')
-          <input type="submit" value="delete"></input>
-        </form>
+              <h2 class="text-dark">{{ $post->title }}</h2>
+              <p class="text-body">{{ $post->content }} </p>
+              <h4 class="text-dark">{{ $post->author }} </h4>
 
-      </div><br>
 
-    </a>
+              <small class="text-body">{{ $post->created_at }} </small><br>
 
-  @endforeach
+              <a role="button" class="btn btn-primary mb-1" href="{{ route('posts.edit', $post->id) }}">edit</a><br>
 
-  <a href="{{ route('posts.create') }}">
-    <h5>create new post</h5>
-  </a>
+              <form action="{{ route('posts.destroy', $post->id) }}" method="post">
+                @csrf
+                @method('DELETE')
+                <input class="btn btn-danger" type="submit" value="delete"></input>
+              </form>
+
+            </div>
+
+          </a>
+      </div>
+    @endforeach
+  </div>
+
+  <a class="btn btn-dark btn-lg" href="{{ route('posts.create') }}">add new post</a>
 
 @stop

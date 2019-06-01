@@ -12,4 +12,7 @@
 */
 
 Route::resource('posts', 'PostController');
-Route::resource('categories', 'CategoryController');    
+Route::resource('categories', 'CategoryController');
+
+// Route::get('/', 'PostController');
+// Route::get('categories', 'CategoryController');

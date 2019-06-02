@@ -15,11 +15,15 @@
       <div class="container">
 
         <header class="py-3">
-          <div class="row justify-content-center align-items-center">
-            <div class="text-center">
+          <div class="row align-items-center">
+            <div class="col"></div>
+            <div class="col text-center">
               <a class="text-dark" href="{{ route('posts.index') }}">
                 <h1>My Blog</h1>
               </a>
+            </div>
+            <div class="col text-right">
+              <a class="btn btn-outline-dark" href="{{ route('search-post') }}">search post</a>
             </div>
           </div>
         </header>

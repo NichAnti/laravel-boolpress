@@ -16,3 +16,6 @@ Route::resource('categories', 'CategoryController');
 
 // Route::get('/', 'PostController');
 // Route::get('categories', 'CategoryController');
+
+Route::get('/searchPage', 'SearchController@searchPost')->name('search-post');
+Route::get('/search', 'SearchController@displayResult')->name('display-searched');

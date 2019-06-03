@@ -11,11 +11,16 @@
 |
 */
 
-Route::resource('posts', 'PostController');
-Route::resource('categories', 'CategoryController');
 
-// Route::get('/', 'PostController');
-// Route::get('categories', 'CategoryController');
+Route::get('/', 'HomeController@showFirstFive')->name('home');
+Route::get('category/{category_name}', 'HomeController@showCategoryPosts')->name('category-posts');
+Route::get('post/{id}', 'HomeController@showPost')->name('show-post');
+Route::get('admin/post/new', 'AdminController@create')->name('create-post');
+Route::post('admin/post/new', 'AdminController@store')->name('store-post');
+Route::get('admin/post/edit/{id}', 'AdminController@edit')->name('edit-post');
+Route::patch('admin/post/edit/{id}', 'AdminController@update')->name('update-post');
+Route::delete('admin/post/delete/{id}', 'AdminController@destroy')->name('destroy-post');
+
 
 Route::get('/searchPage', 'SearchController@searchPost')->name('search-post');
 Route::get('/search', 'SearchController@displayResult')->name('display-searched');

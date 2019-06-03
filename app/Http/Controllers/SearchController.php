@@ -17,6 +17,7 @@ class SearchController extends Controller
       return view("pages.search", compact('categories', 'posts'));
 
     }
+
     public function displayResult(Request $request) {
 
       $title = $request -> title;
@@ -44,7 +45,7 @@ class SearchController extends Controller
         $query = $query->where('author', 'LIKE', '%' . $author . '%');
       }
 
-      $posts = $query->get();
+      $posts = $query->orderByDesc('created_at')->get();
       $categories = Category::all();
 
       return view("pages.home", compact('categories', 'posts'));

@@ -18,9 +18,9 @@
 
       <small class="text-body">{{ $post->created_at }} </small><br>
 
-      <a role="button" class="btn btn-primary mb-1" href="{{ route('posts.edit', $post->id) }}">edit</a><br>
+      <a role="button" class="btn btn-primary mb-1" href="{{ route('edit-post', $post->id) }}">edit</a><br>
 
-      <form action="{{ route('posts.destroy', $post->id) }}" method="post">
+      <form action="{{ route('destroy-post', $post->id) }}" method="post">
         @csrf
         @method('DELETE')
         <input class="btn btn-danger" type="submit" value="delete"></input>

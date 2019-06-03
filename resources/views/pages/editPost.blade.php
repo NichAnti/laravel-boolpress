@@ -2,7 +2,7 @@
 
 @section('content')
 
-  <form action="{{ route('posts.update', $post->id) }}" method="post">
+  <form action="{{ route('update-post', $post->id) }}" method="post">
 
     @csrf
     @method('PATCH')

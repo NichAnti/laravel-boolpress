@@ -2,7 +2,7 @@
 
 @section('content')
 
-  <form action="{{ route('posts.store') }}" method="post">
+  <form action="{{ route('store-post') }}" method="post">
 
     @csrf
 

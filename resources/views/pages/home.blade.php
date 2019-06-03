@@ -7,7 +7,7 @@
     @foreach($categories as $category)
 
       <div class="p-2">
-        <a class=" text-white" href="{{ route('categories.show', $category) }}">{{ $category->name }}</a>
+        <a class=" text-white" href="{{ route('category-posts', $category) }}">{{ $category->name }}</a>
       </div>
 
     @endforeach
@@ -19,7 +19,7 @@
     @foreach($posts as $post)
 
       <div class="col-md-6 mb-2">
-          <a href="{{ route('posts.show', $post->id) }}">
+          <a href="{{ route('show-post', $post->id) }}">
 
             <div class="border rounded shadow-sm overflow-hidden p-5">
 
@@ -36,9 +36,9 @@
 
               <small class="text-body">{{ $post->created_at }} </small><br>
 
-              <a role="button" class="btn btn-primary mb-1" href="{{ route('posts.edit', $post->id) }}">edit</a><br>
+              <a role="button" class="btn btn-primary mb-1" href="{{ route('edit-post', $post->id) }}">edit</a><br>
 
-              <form action="{{ route('posts.destroy', $post->id) }}" method="post">
+              <form action="{{ route('destroy-post', $post->id) }}" method="post">
                 @csrf
                 @method('DELETE')
                 <input class="btn btn-danger" type="submit" value="delete"></input>
@@ -51,6 +51,6 @@
     @endforeach
   </div>
 
-  <a class="btn btn-dark btn-lg" href="{{ route('posts.create') }}">add new post</a>
+  <a class="btn btn-dark btn-lg" href="{{ route('create-post') }}">add new post</a>
 
 @stop

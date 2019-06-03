@@ -18,7 +18,7 @@
           <div class="row align-items-center">
             <div class="col"></div>
             <div class="col text-center">
-              <a class="text-dark" href="{{ route('posts.index') }}">
+              <a class="text-dark" href="{{ route('home') }}">
                 <h1>My Blog</h1>
               </a>
             </div>
